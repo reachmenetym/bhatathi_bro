@@ -1,11 +1,11 @@
 module "ssh_key" {
-  source = "./modules/ssh_key"
+  source = "git::https://github.com/reachmenetym/terraform-aws-ssh_key.git?ref=v1.0.1"
   provision_ssh_key = "true"
   key_name = var.ssh_key_name
 }
 
 module "app_instance" {
-  source = "./modules/app_instance"
+  source = "git::https://github.com/reachmenetym/terraform-aws-app_instance.git?ref=v1.0.1"
   provision_app = var.provision_app
   vpc_id = var.vpc_id
   instance_count = var.app_instance_count
@@ -23,7 +23,7 @@ module "app_instance" {
 # TODO: Need to learn template rendering
 
 module "web_instance" {
-  source = "./modules/web_instance"
+  source = "git::https://github.com/reachmenetym/terraform-aws-web_instance.git?ref=v1.0.1"
   provision_web = var.provision_web
   web_instance_count = var.web_instance_count
   web_instance_type = var.web_instance_type
